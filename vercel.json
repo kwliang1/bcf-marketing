@@ -10,7 +10,8 @@
     { "source": "/reviews", "destination": "/#testimonials", "permanent": true },
     { "source": "/contact-us", "destination": "/#contact", "permanent": true },
     { "source": "/paige", "destination": "/#coaches", "permanent": true },
-    { "source": "/blog/:slug*", "destination": "/", "permanent": true }
+    { "source": "/blog/:slug*", "destination": "/", "permanent": true },
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "wod.ballardcrossfit.com" }], "destination": "https://ballardcrossfit.com", "permanent": true }
   ],
   "headers": [
     {
