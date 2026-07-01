@@ -540,48 +540,7 @@ img {
   text-align: center;
 }
 
-.schedule-tabs {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 24px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.schedule-tab {
-  flex: 1;
-  min-width: 44px;
-  padding: 14px 8px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 50px;
-  color: rgba(255,255,255,0.5);
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all var(--transition);
-}
-
-.schedule-tab:hover,
-.schedule-tab.active {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-white);
-}
-
-.schedule-content {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: var(--radius-lg);
-  min-height: 200px;
-  padding: 24px;
-}
-
-.schedule-loading,
-.instagram-loading {
+.schedule-loading {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -602,55 +561,6 @@ img {
 
 @keyframes spin {
   to { transform: rotate(360deg); }
-}
-
-.schedule-fallback,
-.instagram-fallback {
-  text-align: center;
-  padding: 24px;
-}
-
-.schedule-fallback p {
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 20px;
-}
-
-.schedule-class {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.schedule-class:last-child {
-  border-bottom: none;
-}
-
-.schedule-class-time {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  color: var(--color-accent);
-  min-width: 90px;
-  letter-spacing: 0.02em;
-}
-
-.schedule-class-name {
-  flex: 1;
-  padding: 0 16px;
-  font-weight: 500;
-  color: var(--color-white);
-}
-
-.schedule-class-coach {
-  color: rgba(255,255,255,0.5);
-  font-size: 0.9rem;
-}
-
-.schedule-empty {
-  text-align: center;
-  padding: 40px;
-  color: rgba(255,255,255,0.5);
 }
 
 /* ---- Coaches ---- */
@@ -776,146 +686,13 @@ img {
   font-weight: 500;
 }
 
-.instagram-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 6px;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-
-.instagram-post {
-  aspect-ratio: 1;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-}
-
-.instagram-post img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.instagram-post:hover img {
-  transform: scale(1.05);
-}
-
-.instagram-post-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(44, 40, 37, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity var(--transition);
-  color: var(--color-white);
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.instagram-post:hover .instagram-post-overlay {
-  opacity: 1;
-}
-
 .instagram-cta {
   text-align: center;
-}
-
-.instagram-loading {
-  color: var(--color-text-muted);
-}
-
-.instagram-loading .spinner {
-  border-color: var(--color-border);
-  border-top-color: var(--color-accent);
 }
 
 /* ---- Membership ---- */
 .membership {
   background: var(--color-bg);
-}
-
-.membership-group-title {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  letter-spacing: 0.04em;
-  text-align: center;
-  color: var(--color-text-muted);
-  margin-bottom: 24px;
-}
-
-.membership-plans {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  max-width: 900px;
-  margin: 0 auto 48px;
-}
-
-.plan-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 32px 24px;
-  text-align: center;
-  transition: all var(--transition);
-}
-
-.plan-card:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
-}
-
-.plan-card h4 {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  letter-spacing: 0.04em;
-  margin-bottom: 8px;
-  color: var(--color-dark);
-}
-
-.plan-desc {
-  color: var(--color-text-muted);
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-}
-
-.plan-card .btn {
-  width: 100%;
-  padding: 12px 24px;
-}
-
-.plan-card-featured {
-  border-color: var(--color-accent);
-  position: relative;
-}
-
-.plan-card-featured::before {
-  content: 'Most Popular';
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--color-accent);
-  color: var(--color-white);
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 4px 16px;
-  border-radius: 50px;
-}
-
-.plan-card-disabled {
-  opacity: 0.5;
-  pointer-events: none;
 }
 
 /* ---- Coach Lightbox ---- */
@@ -1401,10 +1178,6 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .instagram-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1476,14 +1249,6 @@ img {
 
   .testimonials-grid {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .instagram-grid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-
-  .membership-plans {
-    grid-template-columns: repeat(4, 1fr);
   }
 
   .footer-grid {
