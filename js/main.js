@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initSignupModal();
   initCoachLightbox();
+  initGalleryLightbox();
 });
 
 // ---- Navbar scroll effect ----
@@ -168,6 +169,43 @@ function initCoachLightbox() {
   close.addEventListener('click', closeLightbox);
   overlay.addEventListener('click', (e) => { if (e.target === overlay) closeLightbox(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+}
+
+// ---- Gym Gallery Lightbox ----
+function initGalleryLightbox() {
+  const overlay = document.getElementById('lightbox');
+  if (!overlay) return;
+  const img = document.getElementById('lightboxImg');
+  const photos = Array.from(document.querySelectorAll('.gym-gallery img'));
+  let current = 0;
+
+  function show(i) {
+    current = i;
+    img.src = photos[i].src;
+    img.alt = photos[i].alt;
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  photos.forEach((photo, i) => {
+    photo.addEventListener('click', () => show(i));
+  });
+
+  document.getElementById('lightboxClose').addEventListener('click', close);
+  document.getElementById('lightboxPrev').addEventListener('click', () => show((current - 1 + photos.length) % photos.length));
+  document.getElementById('lightboxNext').addEventListener('click', () => show((current + 1) % photos.length));
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show((current - 1 + photos.length) % photos.length);
+    if (e.key === 'ArrowRight') show((current + 1) % photos.length);
+  });
 }
 
 // Fade-in CSS injected via JS to avoid FOUC if JS is slow
