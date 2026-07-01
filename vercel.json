@@ -1,6 +1,17 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/our-gym", "destination": "/#about", "permanent": true },
+    { "source": "/get-started", "destination": "/#membership", "permanent": true },
+    { "source": "/memberships", "destination": "/#membership", "permanent": true },
+    { "source": "/new-to-us", "destination": "/#membership", "permanent": true },
+    { "source": "/our-clubs", "destination": "/#programs", "permanent": true },
+    { "source": "/reviews", "destination": "/#testimonials", "permanent": true },
+    { "source": "/contact-us", "destination": "/#contact", "permanent": true },
+    { "source": "/paige", "destination": "/#coaches", "permanent": true },
+    { "source": "/blog/:slug*", "destination": "/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
