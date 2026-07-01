@@ -15,8 +15,11 @@ let currentDate = new Date();
 document.addEventListener('DOMContentLoaded', async () => {
   await loadSchedule();
   initControls();
+  history.replaceState({ view: currentView, date: formatDateISO(currentDate) }, '', null);
   render();
 });
+
+window.addEventListener('popstate', (e) => restoreState(e.state));
 
 async function loadSchedule() {
   try {
@@ -32,15 +35,28 @@ async function loadSchedule() {
 function initControls() {
   document.getElementById('prevBtn').addEventListener('click', () => { navigate(-1); });
   document.getElementById('nextBtn').addEventListener('click', () => { navigate(1); });
-  document.getElementById('todayBtn').addEventListener('click', () => { currentDate = new Date(); render(); });
+  document.getElementById('todayBtn').addEventListener('click', () => { currentDate = new Date(); pushState(); render(); });
 
   document.querySelectorAll('.schedule-view-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.schedule-view-tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       currentView = tab.dataset.view;
+      pushState();
       render();
     });
+  });
+
+  document.getElementById('scheduleBody').addEventListener('click', (e) => {
+    const cell = e.target.closest('.month-day:not(.other-month)');
+    if (!cell || !cell.dataset.date) return;
+    currentDate = new Date(cell.dataset.date + 'T00:00:00');
+    currentView = 'day';
+    document.querySelectorAll('.schedule-view-tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.view === 'day');
+    });
+    pushState();
+    render();
   });
 }
 
@@ -48,6 +64,22 @@ function navigate(dir) {
   if (currentView === 'day') currentDate.setDate(currentDate.getDate() + dir);
   else if (currentView === 'week') currentDate.setDate(currentDate.getDate() + (dir * 7));
   else currentDate.setMonth(currentDate.getMonth() + dir);
+  pushState();
+  render();
+}
+
+function pushState() {
+  const state = { view: currentView, date: formatDateISO(currentDate) };
+  history.pushState(state, '', null);
+}
+
+function restoreState(state) {
+  if (!state) return;
+  currentView = state.view || 'week';
+  currentDate = new Date(state.date + 'T00:00:00');
+  document.querySelectorAll('.schedule-view-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.view === currentView);
+  });
   render();
 }
 
@@ -256,7 +288,7 @@ function renderMonth() {
     const count = classes.length > 0 ? `<div class="month-class-count">${classes.length} class${classes.length !== 1 ? 'es' : ''}</div>` : '';
 
     html += `
-      <div class="month-day${isOther ? ' other-month' : ''}${today}">
+      <div class="month-day${isOther ? ' other-month' : ''}${today}" data-date="${formatDateISO(day)}">
         <div class="month-day-num">${day.getDate()}</div>
         <div>${dots}</div>
         ${count}

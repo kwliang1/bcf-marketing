@@ -340,6 +340,15 @@
   padding: 8px;
   min-height: 90px;
   vertical-align: top;
+  cursor: pointer;
+}
+
+.month-day:not(.other-month):hover {
+  background: var(--color-surface-warm);
+}
+
+.month-day.other-month {
+  cursor: default;
 }
 
 .month-day.other-month {
