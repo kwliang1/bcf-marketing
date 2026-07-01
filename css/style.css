@@ -640,6 +640,7 @@ img {
   object-fit: cover;
   object-position: center top;
   transition: transform 0.5s ease;
+  filter: grayscale(100%);
 }
 
 .coach-card:hover .coach-photo img {
