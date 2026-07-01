@@ -144,7 +144,7 @@ function initSignupModal() {
 // ---- Coach Photo Lightbox ----
 function initCoachLightbox() {
   const overlay = document.createElement('div');
-  overlay.className = 'lightbox-overlay';
+  overlay.className = 'coach-lightbox-overlay';
   overlay.innerHTML = '<button class="lightbox-close" aria-label="Close">&times;</button><img class="lightbox-img" src="" alt="">';
   document.body.appendChild(overlay);
 
@@ -154,7 +154,7 @@ function initCoachLightbox() {
   document.querySelectorAll('.coach-photo img').forEach(photo => {
     photo.style.cursor = 'pointer';
     photo.addEventListener('click', () => {
-      img.src = photo.src.replace('format=500w', 'format=1500w');
+      img.src = photo.src;
       img.alt = photo.alt;
       overlay.classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -168,7 +168,9 @@ function initCoachLightbox() {
 
   close.addEventListener('click', closeLightbox);
   overlay.addEventListener('click', (e) => { if (e.target === overlay) closeLightbox(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) closeLightbox();
+  });
 }
 
 // ---- Gym Gallery Lightbox ----

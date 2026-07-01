@@ -919,7 +919,7 @@ img {
 }
 
 /* ---- Coach Lightbox ---- */
-.lightbox-overlay {
+.coach-lightbox-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.85);
@@ -930,31 +930,21 @@ img {
   padding: 24px;
 }
 
-.lightbox-overlay.active {
+.coach-lightbox-overlay.active {
   display: flex;
 }
 
-.lightbox-img {
-  max-width: 90vw;
-  max-height: 85vh;
+.coach-lightbox-overlay .lightbox-img {
   border-radius: var(--radius-lg);
-  object-fit: contain;
   animation: modalIn 0.3s ease;
 }
 
-.lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  background: none;
-  border: none;
+.coach-lightbox-overlay .lightbox-close {
   color: rgba(255,255,255,0.7);
-  font-size: 2rem;
-  cursor: pointer;
   transition: color var(--transition);
 }
 
-.lightbox-close:hover {
+.coach-lightbox-overlay .lightbox-close:hover {
   color: var(--color-white);
 }
 

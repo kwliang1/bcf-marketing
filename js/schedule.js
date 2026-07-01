@@ -4,7 +4,6 @@
 
 const API_URL = 'https://api.chalkitpro.com/api/gymclasses/PublicCalendar/964';
 const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-const DAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const DAY_LABELS_FULL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -26,6 +25,9 @@ async function loadSchedule() {
     const res = await fetch(API_URL);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     rawClasses = await res.json();
+    for (const c of rawClasses) {
+      c._days = JSON.parse(c.daysOfWeek || '{}');
+    }
   } catch {
     document.getElementById('scheduleBody').innerHTML =
       '<div class="no-classes">Unable to load schedule. Please try again later.</div>';
@@ -127,8 +129,7 @@ function getClassesForDate(date) {
     if (date < startDate) continue;
     if (c.endDate && date > new Date(c.endDate)) continue;
 
-    const days = JSON.parse(c.daysOfWeek || '{}');
-    if (!days[dayName] && !c.singleClass) continue;
+    if (!c._days[dayName] && !c.singleClass) continue;
 
     const dateStr = formatDateISO(date);
     const mod = (c.modifications || []).find(m => formatDateISO(new Date(m.date)) === dateStr);
