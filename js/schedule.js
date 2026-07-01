@@ -121,11 +121,14 @@ function getClassesForDate(date) {
     const trackName = c.track ? c.track.trackName : c.className;
 
     classes.push({
+      id: c.id,
+      trackId: c.trackId,
       name: c.className,
       track: trackName,
       startHour, startMinute, duration,
       coach, limit,
       tag: getTagClass(trackName),
+      date,
     });
   }
 
@@ -156,6 +159,11 @@ function isToday(d) {
   return d.getDate() === now.getDate() && d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
 }
 
+function getSignUpUrl(c) {
+  const d = c.date;
+  return `https://app.chalkitpro.com/classkiosk/${c.id}/${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}/964/${c.trackId}`;
+}
+
 function renderClassItem(c) {
   return `
     <div class="class-item">
@@ -167,6 +175,7 @@ function renderClassItem(c) {
           <span class="class-tag class-tag-${c.tag}">${c.track}</span>
         </div>
       </div>
+      <a href="${getSignUpUrl(c)}" class="class-signup" target="_blank" rel="noopener">Sign Up</a>
     </div>`;
 }
 
