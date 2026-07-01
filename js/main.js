@@ -69,7 +69,7 @@ function initScrollAnimations() {
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.pillar, .program-card, .coach-card, .testimonial-card, .membership-feature').forEach(el => {
+  document.querySelectorAll('.pillar, .program-card, .coach-card, .testimonial-card').forEach(el => {
     el.classList.add('fade-in');
     observer.observe(el);
   });
@@ -110,7 +110,9 @@ function initSignupModal() {
   document.getElementById('signupBtn').addEventListener('click', openModal);
   document.getElementById('modalClose').addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+  });
 
   // Screen 1: choose path
   modal.querySelectorAll('.modal-option').forEach(opt => {
