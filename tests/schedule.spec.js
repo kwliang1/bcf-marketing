@@ -72,6 +72,26 @@ test.describe('Schedule page', () => {
     const hasToday = await page.locator('.is-today').count();
     expect(hasToday).toBeGreaterThan(0);
   });
+
+  test('sign-up URL contains correct date components', async ({ page }) => {
+    const signUp = page.locator('.class-signup').first();
+    const count = await signUp.count();
+    if (count > 0) {
+      const href = await signUp.getAttribute('href');
+      expect(href).toMatch(/classkiosk\/\d+\/\d{4}-\d{1,2}-\d{1,2}\/964\/\d+/);
+    }
+  });
+
+  test('month view other-month days do not navigate', async ({ page }) => {
+    await page.click('.schedule-view-tab[data-view="month"]');
+    await page.waitForSelector('.month-grid');
+    const otherDay = page.locator('.month-day.other-month').first();
+    const count = await otherDay.count();
+    if (count > 0) {
+      await otherDay.click();
+      await expect(page.locator('.month-grid')).toBeVisible();
+    }
+  });
 });
 
 test.describe('Homepage navigation', () => {
