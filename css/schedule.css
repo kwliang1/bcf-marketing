@@ -1,0 +1,411 @@
+/* ========================================
+   Schedule Page — Ballard CrossFit
+   ======================================== */
+
+.schedule-page {
+  padding-top: 80px;
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.page-schedule .navbar {
+  background: var(--color-surface) !important;
+}
+
+.page-schedule .nav-logo {
+  color: var(--color-dark) !important;
+}
+
+.page-schedule .nav-toggle span {
+  background: var(--color-dark) !important;
+}
+
+.schedule-header {
+  text-align: center;
+  padding: 40px 24px 0;
+}
+
+.schedule-header h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  letter-spacing: 0.04em;
+  color: var(--color-dark);
+}
+
+/* ---- Controls ---- */
+.schedule-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 24px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.schedule-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.schedule-nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.schedule-nav-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.schedule-date-label {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  color: var(--color-dark);
+  min-width: 200px;
+  text-align: center;
+}
+
+.schedule-today-btn {
+  padding: 6px 16px;
+  border-radius: 50px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.schedule-today-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.schedule-view-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  background: var(--color-surface-warm);
+  border-radius: 50px;
+  padding: 4px;
+  align-self: center;
+}
+
+.schedule-view-tab {
+  padding: 8px 24px;
+  border-radius: 50px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.schedule-view-tab:hover {
+  color: var(--color-dark);
+}
+
+.schedule-view-tab.active {
+  background: var(--color-dark);
+  color: var(--color-white);
+}
+
+/* ---- Schedule Body ---- */
+.schedule-body {
+  max-width: 1200px;
+  margin: 24px auto 0;
+  padding: 0 24px 60px;
+}
+
+.schedule-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0;
+  color: var(--color-text-muted);
+}
+
+/* ---- Week View ---- */
+.week-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.week-day {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.week-day-header {
+  padding: 12px 16px;
+  background: var(--color-surface-warm);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  color: var(--color-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.week-day-header .day-date {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.week-day.is-today .week-day-header {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.week-day.is-today .week-day-header .day-date {
+  color: rgba(255,255,255,0.8);
+}
+
+.week-day-classes {
+  padding: 8px;
+}
+
+.class-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  transition: background var(--transition);
+}
+
+.class-item:hover {
+  background: var(--color-surface-warm);
+}
+
+.class-time {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--color-accent);
+  min-width: 70px;
+  letter-spacing: 0.02em;
+}
+
+.class-info {
+  flex: 1;
+}
+
+.class-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--color-dark);
+}
+
+.class-meta {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.class-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 50px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.class-tag-crossfit {
+  background: rgba(196, 70, 42, 0.1);
+  color: var(--color-accent);
+}
+
+.class-tag-opengym {
+  background: rgba(76, 140, 74, 0.1);
+  color: #4c8c4a;
+}
+
+.class-tag-vitality {
+  background: rgba(196, 160, 42, 0.1);
+  color: #a08520;
+}
+
+.no-classes {
+  padding: 20px 12px;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ---- Day View ---- */
+.day-view {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.day-view .week-day-header {
+  font-size: 1.3rem;
+}
+
+.day-view .class-item {
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.day-view .class-item:last-child {
+  border-bottom: none;
+}
+
+.day-view .class-time {
+  font-size: 1.1rem;
+  min-width: 85px;
+}
+
+.day-view .class-name {
+  font-size: 1rem;
+}
+
+.day-view .class-meta {
+  font-size: 0.85rem;
+}
+
+/* ---- Month View ---- */
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.month-day-header {
+  background: var(--color-surface-warm);
+  padding: 8px 4px;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.month-day {
+  background: var(--color-surface);
+  padding: 8px;
+  min-height: 90px;
+  vertical-align: top;
+}
+
+.month-day.other-month {
+  background: var(--color-bg);
+  opacity: 0.4;
+}
+
+.month-day.is-today {
+  background: rgba(196, 70, 42, 0.04);
+}
+
+.month-day-num {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.month-day.is-today .month-day-num {
+  color: var(--color-accent);
+}
+
+.month-class-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin: 1px;
+}
+
+.month-class-dot.crossfit { background: var(--color-accent); }
+.month-class-dot.opengym { background: #4c8c4a; }
+.month-class-dot.vitality { background: #c4a02a; }
+
+.month-class-count {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+/* ---- Responsive ---- */
+@media (min-width: 640px) {
+  .schedule-controls {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .schedule-nav {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .week-grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .week-day-header {
+    flex-direction: column;
+    gap: 2px;
+    text-align: center;
+  }
+
+  .class-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .class-time {
+    min-width: unset;
+    font-size: 0.9rem;
+  }
+
+  .class-name {
+    font-size: 0.8rem;
+  }
+
+  .class-meta {
+    font-size: 0.7rem;
+  }
+
+  .month-day {
+    min-height: 110px;
+  }
+}

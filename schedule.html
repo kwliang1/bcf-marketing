@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Schedule | Ballard CrossFit</title>
+  <meta name="description" content="View the weekly class schedule at Ballard CrossFit — CrossFit, Open Gym, and more in Seattle's Ballard neighborhood.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://images.squarespace-cdn.com/content/v1/5773406cf5e231100a59411c/1568659630324-ZPREEG2YJKWWOETV3PXT/Ballard_Crossfit_Logo-white.png?format=32w">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/schedule.css">
+</head>
+<body class="page-schedule">
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">BALLARD<span>CROSSFIT</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#programs">Programs</a></li>
+        <li><a href="/schedule" class="active">Schedule</a></li>
+        <li><a href="/#coaches">Coaches</a></li>
+        <li><a href="/#testimonials">Reviews</a></li>
+        <li><a href="/#membership">Membership</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="https://app.chalkitpro.com/classschedulepublic/964" class="nav-cta" target="_blank" rel="noopener">Book a Class</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="schedule-page">
+    <div class="schedule-header">
+      <h1>Class Schedule</h1>
+    </div>
+
+    <div class="schedule-controls">
+      <div class="schedule-nav">
+        <button class="schedule-nav-btn" id="prevBtn" aria-label="Previous">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <h2 class="schedule-date-label" id="dateLabel"></h2>
+        <button class="schedule-nav-btn" id="nextBtn" aria-label="Next">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <button class="schedule-today-btn" id="todayBtn">Today</button>
+      </div>
+      <div class="schedule-view-tabs">
+        <button class="schedule-view-tab" data-view="day">Day</button>
+        <button class="schedule-view-tab active" data-view="week">Week</button>
+        <button class="schedule-view-tab" data-view="month">Month</button>
+      </div>
+    </div>
+
+    <div class="schedule-body" id="scheduleBody">
+      <div class="schedule-loading">
+        <div class="spinner"></div>
+        <p>Loading schedule...</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/schedule.js"></script>
+</body>
+</html>
