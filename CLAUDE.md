@@ -28,7 +28,7 @@
 ## Business Info
 - Address: 6419 15th Ave NW, Seattle, WA 98107
 - Phone: (206) 383-2020
-- Email: paige@ballardcrossfit.com
+- Email: support@ballardcrossfit.com
 - Owner: Paige Wager
 - Hours: Mon-Fri 6am-12pm & 3pm-8pm, Sat 7am-12pm, Sun closed
 
